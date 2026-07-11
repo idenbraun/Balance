@@ -30,30 +30,29 @@
     --logo-color: #a855f7;
   }
 
-  /* ===== БЕСШОВНЫЙ ФОН С ФИКСИРОВАННЫМ ГРАДИЕНТОМ ===== */
   html {
     height: 100%;
     background: var(--bg);
   }
 
   body {
-  min-height: 100vh;
-  min-height: 100dvh;
-  margin: 0;
-  padding: 1.5rem 1.5rem 0 1.5rem;
-  background: radial-gradient(circle at 20% 20%, #1a0a3e 0%, var(--bg) 60%);
-  color: #fff;
-  font-family: 'Inter', -apple-system, 'Segoe UI', Roboto, sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-tap-highlight-color: transparent;
-  letter-spacing: -0.01em;
-}
+    min-height: 100vh;
+    min-height: 100dvh;
+    margin: 0;
+    padding: 1.5rem 1.5rem 0 1.5rem;
+    background: radial-gradient(circle at 20% 20%, #1a0a3e 0%, var(--bg) 60%);
+    color: #fff;
+    font-family: 'Inter', -apple-system, 'Segoe UI', Roboto, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent;
+    letter-spacing: -0.01em;
+  }
 
   .app-wrapper {
     display: flex;
@@ -618,6 +617,14 @@
     25% { content: '.'; }
     50% { content: '..'; }
     75% { content: '...'; }
+  }
+
+  .cache-hint {
+    font-size: 0.75rem;
+    opacity: 0.4;
+    text-align: center;
+    margin-top: 16px;
+    font-style: italic;
   }
 
   .wallpaper-render {
@@ -1212,12 +1219,68 @@ function showToast(message) {
   setTimeout(() => toast.classList.remove('show'), 2500);
 }
 
+// ========== КЭШ ИИ-АНАЛИЗА ==========
+
+const CACHE_KEY = 'aiAnalysisCache';
+const CACHE_DURATION = 15 * 60 * 1000; // 15 минут
+
+function getCachedAnalysis() {
+  try {
+    const cached = localStorage.getItem(CACHE_KEY);
+    if (!cached) return null;
+    
+    const data = JSON.parse(cached);
+    const now = Date.now();
+    
+    // Проверяем, что оценки не менялись и кэш не устарел
+    if (JSON.stringify(data.values) === JSON.stringify(values) && 
+        (now - data.timestamp) < CACHE_DURATION) {
+      return data.response;
+    }
+    
+    return null;
+  } catch (e) {
+    return null;
+  }
+}
+
+function saveCachedAnalysis(response) {
+  try {
+    const cache = {
+      values: [...values],
+      response: response,
+      timestamp: Date.now()
+    };
+    localStorage.setItem(CACHE_KEY, JSON.stringify(cache));
+  } catch (e) {
+    console.error('Cache save error:', e);
+  }
+}
+
 async function showRecommendations() {
   const panel = document.getElementById('recPanel');
   const content = document.getElementById('recContent');
   
   panel.classList.add('active');
   
+  // Проверяем кэш
+  const cached = getCachedAnalysis();
+  if (cached) {
+    // Показываем из кэша мгновенно
+    content.innerHTML = `
+      <div class="ai-loader">
+        <div class="ai-loader-orb"></div>
+        <div class="ai-loader-text">Загружаем анализ...</div>
+      </div>
+    `;
+    
+    // Небольшая задержка для визуального эффекта
+    await new Promise(r => setTimeout(r, 300));
+    renderAIAnalysis(cached, true);
+    return;
+  }
+  
+  // Кэша нет — показываем лоадер и делаем запрос
   content.innerHTML = `
     <div class="ai-loader">
       <div class="ai-loader-orb"></div>
@@ -1229,7 +1292,8 @@ async function showRecommendations() {
   
   try {
     const analysis = await fetchAIAnalysis();
-    renderAIAnalysis(analysis);
+    saveCachedAnalysis(analysis); // Сохраняем в кэш
+    renderAIAnalysis(analysis, false);
   } catch (err) {
     console.error('AI error:', err);
     content.innerHTML = `
@@ -1335,7 +1399,7 @@ ${areasData}
   return parsed;
 }
 
-function renderAIAnalysis(data) {
+function renderAIAnalysis(data, fromCache) {
   const content = document.getElementById('recContent');
   
   const statusMap = {
@@ -1400,6 +1464,11 @@ function renderAIAnalysis(data) {
         </div>
       </div>
     `;
+  }
+  
+  // Пометка о кэше
+  if (fromCache) {
+    html += `<div class="cache-hint">💾 Анализ из кэша · Измени оценки для нового анализа</div>`;
   }
   
   content.innerHTML = html;
