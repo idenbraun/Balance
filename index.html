@@ -40,12 +40,15 @@
   body {
     min-height: 100vh;
     min-height: 100dvh;
+    margin: 0;
+    padding: 1.5rem 1.5rem 0 1.5rem;
     background: radial-gradient(circle at 20% 20%, #1a0a3e 0%, var(--bg) 60%);
     color: #fff;
     font-family: 'Inter', -apple-system, 'Segoe UI', Roboto, sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -73,7 +76,8 @@
     align-items: center;
     justify-content: flex-start;
     width: 100%;
-    padding: clamp(2rem, 6vh, 3.5rem) 1.5rem 1.5rem;
+    padding-top: clamp(2rem, 8vh, 5rem);
+    padding-bottom: 4rem;
   }
 
   /* ===== HEADER / ЛОГОТИП ===== */
@@ -84,7 +88,7 @@
   }
 
   .logo {
-    font-size: 13px;
+    font-size: 14px;
     letter-spacing: 4px;
     color: var(--logo-color);
     text-transform: uppercase;
@@ -134,7 +138,7 @@
     color: var(--footer-text);
     font-size: 0.75rem;
     letter-spacing: 0.15em;
-    padding: 1.8rem 1rem 2.5rem;
+    padding: 1.8rem 1rem 3rem;
     border-top: 1px solid var(--footer-border);
     margin-top: auto;
   }
@@ -455,9 +459,18 @@
   .rec-title {
     font-size: 1.3rem;
     font-weight: 300;
+  }
+  .rec-title-text {
     background: linear-gradient(90deg, #a855f7, #ec4899);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .rec-title-emoji {
+    -webkit-text-fill-color: initial !important;
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    background-clip: initial !important;
   }
   .rec-close {
     width: 32px; height: 32px;
@@ -726,13 +739,30 @@
     background: rgba(168, 85, 247, 0.5);
     border-radius: 50%;
     pointer-events: none;
-    animation: float 15s linear infinite;
+    animation: float var(--duration) linear infinite;
+    animation-delay: var(--delay);
   }
   @keyframes float {
-    0% { transform: translateY(100vh) scale(0); opacity: 0; }
-    10% { opacity: 1; }
-    90% { opacity: 1; }
-    100% { transform: translateY(-100vh) scale(1); opacity: 0; }
+    0% { 
+      transform: translateY(100vh) translateX(0) scale(0); 
+      opacity: 0; 
+    }
+    10% { 
+      opacity: 0.6; 
+      transform: translateY(90vh) translateX(10px) scale(0.5);
+    }
+    50% {
+      transform: translateY(50vh) translateX(-10px) scale(0.8);
+      opacity: 0.8;
+    }
+    90% { 
+      opacity: 0.6; 
+      transform: translateY(10vh) translateX(10px) scale(1);
+    }
+    100% { 
+      transform: translateY(-10vh) translateX(0) scale(1); 
+      opacity: 0; 
+    }
   }
 
   .confetti {
@@ -770,10 +800,12 @@
   /* ===== АДАПТИВ ===== */
   @media (max-width: 768px) {
     body {
+      padding: 0.8rem 0.8rem 0 0.8rem;
       min-height: 100dvh;
     }
     .page-content {
-      padding: clamp(1.5rem, 4vh, 2.5rem) 0.8rem 1rem;
+      padding-top: clamp(1.5rem, 8vh, 4rem);
+      padding-bottom: 3rem;
     }
     .wheel-wrap { width: 95vw; }
     .recommendations-panel {
@@ -796,7 +828,7 @@
   }
 
   @media (max-width: 380px) {
-    .logo { font-size: 11px; letter-spacing: 3px; }
+    .logo { font-size: 12px; letter-spacing: 3px; }
   }
 </style>
 </head>
@@ -900,7 +932,10 @@
 <!-- Панель рекомендаций -->
 <div class="recommendations-panel" id="recPanel">
   <div class="rec-header">
-    <div class="rec-title">✨ ИИ-АНАЛИЗ</div>
+    <div class="rec-title">
+      <span class="rec-title-emoji">✨</span>
+      <span class="rec-title-text">ИИ-АНАЛИЗ</span>
+    </div>
     <button class="rec-close" onclick="closeRecommendations()">×</button>
   </div>
   <div id="recContent"></div>
@@ -1406,8 +1441,10 @@ function spawnParticles() {
     const p = document.createElement('div');
     p.className = 'particle';
     p.style.left = Math.random() * 100 + 'vw';
-    p.style.animationDelay = Math.random() * 15 + 's';
-    p.style.animationDuration = (10 + Math.random() * 10) + 's';
+    const duration = 10 + Math.random() * 10;
+    const delay = -Math.random() * duration;
+    p.style.setProperty('--duration', duration + 's');
+    p.style.setProperty('--delay', delay + 's');
     p.style.background = `hsla(${Math.random() * 360}, 70%, 60%, 0.4)`;
     document.body.appendChild(p);
   }
