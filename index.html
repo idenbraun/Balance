@@ -15,21 +15,10 @@
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --bg: #0a0a1a;
-    --bg2: #1a0a2e;
-    --accent: #a855f7;
-    --accent-pink: #ec4899;
-    --accent-orange: #f59e0b;
-    --text: #e0e0e0;
-    --text-secondary: #8a8a9a;
-    --text-muted: #5a5a6a;
-    --footer-text: #3a3a4a;
-    --footer-link: #6a6a7a;
-    --footer-link-hover: #c0c0d0;
-    --footer-border: #1a1a2a;
-    --logo-color: #a855f7;
+    --bg: #0a0a1a; --bg2: #1a0a2e; --accent: #a855f7; --accent-pink: #ec4899;
+    --text: #e0e0e0; --footer-text: #3a3a4a; --footer-link: #6a6a7a;
+    --footer-link-hover: #c0c0d0; --footer-border: #1a1a2a; --logo-color: #a855f7;
   }
-
   html { height: 100%; background: var(--bg); }
   body {
     min-height: 100vh; min-height: 100dvh; margin: 0; padding: 1.5rem 1.5rem 0 1.5rem;
@@ -37,9 +26,7 @@
     color: #fff; font-family: 'Inter', -apple-system, 'Segoe UI', Roboto, sans-serif;
     display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
     overflow-x: hidden; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: transparent;
-    letter-spacing: -0.01em;
   }
-
   .app-wrapper {
     display: flex; flex-direction: column; flex: 1 0 auto; width: 100%; max-width: 1000px;
     min-height: 100vh; min-height: 100dvh; position: relative; z-index: 1;
@@ -65,7 +52,6 @@
     color: rgba(255, 255, 255, 0.5); font-size: clamp(13px, 2vw, 15px); font-weight: 300;
     line-height: 1.5; max-width: 500px; margin: 0 auto;
   }
-
   .footer {
     flex-shrink: 0; width: 100%; display: flex; flex-direction: column; align-items: center;
     gap: 0.7rem; color: var(--footer-text); font-size: 0.75rem; letter-spacing: 0.15em;
@@ -75,7 +61,7 @@
   .footer a {
     color: var(--footer-link); text-decoration: underline; text-underline-offset: 3px;
     text-decoration-thickness: 1px; text-decoration-color: transparent;
-    transition: text-decoration-color 0.25s, color 0.25s; font-weight: 400; letter-spacing: 0.02em;
+    transition: text-decoration-color 0.25s, color 0.25s; font-weight: 400;
   }
   .footer a:hover { color: var(--footer-link-hover); text-decoration-color: currentColor; }
 
@@ -84,7 +70,6 @@
   .sector { cursor: pointer; transition: filter 0.3s ease; }
   .sector:hover { filter: brightness(1.3) drop-shadow(0 0 12px currentColor); }
   .sector-fill { transition: d 0.8s cubic-bezier(0.34, 1.56, 0.64, 1); }
-
   .center-circle {
     fill: rgba(10, 10, 26, 0.85); stroke: url(#centerGrad); stroke-width: 2;
     animation: pulse 3s ease-in-out infinite;
@@ -103,7 +88,6 @@
   }
   .modal.active { display: flex; animation: fadeIn 0.3s ease; }
   @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
   .modal-card {
     background: rgba(255,255,255,0.08); backdrop-filter: blur(20px);
     border: 1px solid rgba(255,255,255,0.15); border-radius: 24px; padding: 32px;
@@ -113,7 +97,6 @@
   .modal-title { font-size: 1.3rem; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
   .modal-dot { width: 14px; height: 14px; border-radius: 50%; }
   .modal-desc { opacity: 0.7; font-size: 0.9rem; margin-bottom: 24px; line-height: 1.5; }
-
   .slider-row { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
   input[type=range] {
     flex: 1; -webkit-appearance: none; height: 6px; background: rgba(255,255,255,0.15);
@@ -124,19 +107,13 @@
     background: linear-gradient(135deg, #a855f7, #ec4899); cursor: pointer;
     box-shadow: 0 0 16px rgba(168, 85, 247, 0.6);
   }
-  input[type=range]::-moz-range-thumb {
-    width: 28px; height: 28px; border: none; border-radius: 50%;
-    background: linear-gradient(135deg, #a855f7, #ec4899); cursor: pointer;
-  }
   .value-display { font-size: 2rem; font-weight: 200; min-width: 50px; text-align: center; }
-
   .btn {
     width: 100%; padding: 14px; background: linear-gradient(90deg, #a855f7, #ec4899);
     border: none; border-radius: 12px; color: #fff; font-size: 1rem; cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s; font-family: inherit;
   }
   .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(168, 85, 247, 0.4); }
-
   .controls { margin-top: 30px; display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
   .ghost-btn {
     padding: 12px 20px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15);
@@ -165,7 +142,6 @@
   }
   @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
   @media (min-width: 600px) { .share-menu { align-items: center; } .share-menu-card { border-radius: 28px; } }
-  
   .share-menu-title { text-align: center; font-size: 1.1rem; font-weight: 400; margin-bottom: 24px; opacity: 0.9; }
   .share-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
   .share-item {
@@ -201,16 +177,11 @@
     background: linear-gradient(90deg, #a855f7, #ec4899); -webkit-background-clip: text;
     -webkit-text-fill-color: transparent; background-clip: text;
   }
-  .rec-title-emoji {
-    -webkit-text-fill-color: initial !important; background: none !important;
-    -webkit-background-clip: initial !important; background-clip: initial !important;
-  }
   .rec-close {
     width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,0.1);
     border: none; color: #fff; cursor: pointer; font-size: 1.2rem; transition: all 0.2s; font-family: inherit;
   }
   .rec-close:hover { background: rgba(255,255,255,0.2); transform: rotate(90deg); }
-
   .rec-section { margin-bottom: 24px; }
   .rec-section-title { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1.5px; opacity: 0.5; margin-bottom: 12px; }
   .rec-item {
@@ -219,10 +190,10 @@
   }
   @keyframes slideIn { from { transform: translateX(20px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
   .rec-item-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-  .rec-item-icon { font-size: 1.5rem; filter: none !important; -webkit-text-fill-color: initial !important; }
+  .rec-item-icon { font-size: 1.5rem; }
   .rec-item-title { font-size: 1rem; font-weight: 500; }
   .rec-item-value { margin-left: auto; font-size: 1.1rem; font-weight: 200; opacity: 0.7; }
-  .rec-item-text { font-size: 0.9rem; line-height: 1.6; opacity: 0.88; }
+  .rec-item-text { font-size: 0.9rem; line-height: 1.6; opacity: 0.9; }
 
   .balance-indicator {
     background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(236, 72, 153, 0.2));
@@ -231,8 +202,7 @@
   }
   .balance-score { font-size: 2.2rem; font-weight: 200; margin-bottom: 6px; }
   .balance-label { font-size: 0.75rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 1.5px; }
-  .balance-summary { margin-top: 14px; font-size: 0.9rem; line-height: 1.5; opacity: 0.85; text-align: left; }
-
+  .balance-summary { margin-top: 14px; font-size: 0.9rem; line-height: 1.5; opacity: 0.9; text-align: left; }
   .next-step-card {
     background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(6, 182, 212, 0.15));
     border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 16px; padding: 18px;
@@ -242,6 +212,7 @@
     margin-bottom: 10px; display: flex; align-items: center; gap: 8px;
   }
   .next-step-text { font-size: 0.95rem; line-height: 1.6; }
+  .cache-hint { font-size: 0.75rem; opacity: 0.4; text-align: center; margin-top: 16px; font-style: italic; }
 
   .ai-loader {
     display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -270,8 +241,6 @@
     content: ''; animation: dots 1.5s steps(4, end) infinite;
   }
   @keyframes dots { 0% { content: ''; } 25% { content: '.'; } 50% { content: '..'; } 75% { content: '...'; } }
-
-  .cache-hint { font-size: 0.75rem; opacity: 0.4; text-align: center; margin-top: 16px; font-style: italic; }
 
   .wallpaper-render {
     position: fixed; left: -9999px; top: 0; width: 2560px; height: 1440px;
@@ -321,13 +290,11 @@
     90% { opacity: 0.6; transform: translateY(10vh) translateX(10px) scale(1); }
     100% { transform: translateY(-10vh) translateX(0) scale(1); opacity: 0; }
   }
-
   .confetti {
     position: fixed; width: 8px; height: 14px; top: -20px; pointer-events: none;
     animation: confettiFall 3s linear forwards;
   }
   @keyframes confettiFall { to { transform: translateY(110vh) rotate(720deg); } }
-
   .toast {
     position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px);
     background: rgba(30, 20, 50, 0.95); backdrop-filter: blur(20px);
@@ -352,9 +319,6 @@
     .sector-label { font-size: 10px; }
     .footer .links { gap: 1.2rem; font-size: 0.7rem; }
   }
-  @media (max-width: 380px) {
-    .logo { font-size: 12px; letter-spacing: 3px; }
-  }
 </style>
 </head>
 <body>
@@ -367,7 +331,7 @@
         <span>Balance</span>
       </div>
       <h1>Найди свой баланс</h1>
-      <p class="subtitle">Оцени 8 сфер жизни — получи персональный анализ и план действий на неделю</p>
+      <p class="subtitle">Оцени 8 сфер жизни — получи глубокий персональный разбор и план действий на неделю</p>
     </header>
 
     <div class="wheel-wrap" id="wheelWrap">
@@ -391,7 +355,7 @@
         <span>📤</span> Поделиться
       </button>
       <button class="ghost-btn primary" onclick="showRecommendations()">
-        <span>✨</span> ИИ-анализ
+        <span>✨</span> Умный анализ
       </button>
     </div>
   </div>
@@ -453,8 +417,8 @@
 <div class="recommendations-panel" id="recPanel">
   <div class="rec-header">
     <div class="rec-title">
-      <span class="rec-title-emoji">✨</span>
-      <span class="rec-title-text">АНАЛИЗ</span>
+      <span>✨</span>
+      <span class="rec-title-text">РАЗБОР СИТУАЦИИ</span>
     </div>
     <button class="rec-close" onclick="closeRecommendations()">×</button>
   </div>
@@ -467,14 +431,14 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
 const AREAS = [
-  { name: 'Здоровье',      icon: '💪', desc: 'Как ты себя чувствуешь: энергия, сон, тело, питание', color: '#ef4444' },
-  { name: 'Карьера',       icon: '💼', desc: 'Насколько тебя драйвит работа и есть ли рост',       color: '#f59e0b' },
-  { name: 'Финансы',       icon: '💰', desc: 'Сколько зарабатываешь и хватает ли на жизнь и мечты', color: '#eab308' },
-  { name: 'Отношения',     icon: '❤️', desc: 'Любовь, близость, есть ли свой человек рядом',        color: '#ec4899' },
-  { name: 'Семья',         icon: '🏡', desc: 'Связь с родителями, детьми, ощущение корней',         color: '#a855f7' },
-  { name: 'Окружение',     icon: '👥', desc: 'Люди вокруг + пространство, в котором живёшь', color: '#6366f1' },
-  { name: 'Саморазвитие',  icon: '📚', desc: 'Учишься ли новому, растёшь ли как личность',          color: '#06b6d4' },
-  { name: 'Отдых',         icon: '🌴', desc: 'Хобби, путешествия, время для чистого кайфа',         color: '#10b981' },
+  { name: 'Здоровье',      icon: '💪', desc: 'Энергия, сон, тело, питание', color: '#ef4444' },
+  { name: 'Карьера',       icon: '💼', desc: 'Драйв от работы, профессиональный рост', color: '#f59e0b' },
+  { name: 'Финансы',       icon: '💰', desc: 'Доходы, хватает ли на жизнь и мечты', color: '#eab308' },
+  { name: 'Отношения',     icon: '❤️', desc: 'Любовь, близость, свой человек рядом', color: '#ec4899' },
+  { name: 'Семья',         icon: '🏡', desc: 'Связь с родителями, детьми, ощущение корней', color: '#a855f7' },
+  { name: 'Окружение',     icon: '👥', desc: 'Друзья, коллеги + дом, порядок, атмосфера', color: '#6366f1' },
+  { name: 'Саморазвитие',  icon: '📚', desc: 'Учёба, новый опыт, рост как личности', color: '#06b6d4' },
+  { name: 'Отдых',         icon: '🌴', desc: 'Хобби, путешествия, время для чистого кайфа', color: '#10b981' },
 ];
 
 const savedValues = localStorage.getItem('wheelOfLife');
@@ -485,10 +449,7 @@ const CX = 250, CY = 250, R = 200;
 const sectorsG = document.getElementById('sectors');
 const labelsG  = document.getElementById('labels');
 
-function polar(cx, cy, r, angle) {
-  return [cx + r * Math.cos(angle), cy + r * Math.sin(angle)];
-}
-
+function polar(cx, cy, r, angle) { return [cx + r * Math.cos(angle), cy + r * Math.sin(angle)]; }
 function sectorPath(startAngle, endAngle, radius) {
   const [x1, y1] = polar(CX, CY, radius, startAngle);
   const [x2, y2] = polar(CX, CY, radius, endAngle);
@@ -497,61 +458,39 @@ function sectorPath(startAngle, endAngle, radius) {
 }
 
 function buildWheel() {
-  sectorsG.innerHTML = '';
-  labelsG.innerHTML = '';
+  sectorsG.innerHTML = ''; labelsG.innerHTML = '';
   const step = (Math.PI * 2) / AREAS.length;
   const startOffset = -Math.PI / 2 - step / 2;
-
   AREAS.forEach((area, i) => {
-    const a1 = startOffset + i * step;
-    const a2 = a1 + step;
-    const aMid = (a1 + a2) / 2;
-
+    const a1 = startOffset + i * step, a2 = a1 + step, aMid = (a1 + a2) / 2;
     const bg = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-    bg.setAttribute('d', sectorPath(a1, a2, R));
-    bg.setAttribute('fill', area.color);
-    bg.setAttribute('opacity', '0.15');
-    bg.setAttribute('class', 'sector');
-    bg.setAttribute('data-idx', i);
-    bg.addEventListener('click', () => openModal(i));
-
+    bg.setAttribute('d', sectorPath(a1, a2, R)); bg.setAttribute('fill', area.color);
+    bg.setAttribute('opacity', '0.15'); bg.setAttribute('class', 'sector');
+    bg.setAttribute('data-idx', i); bg.addEventListener('click', () => openModal(i));
     const fill = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-    fill.setAttribute('d', sectorPath(a1, a2, R * values[i] / 10));
-    fill.setAttribute('fill', area.color);
-    fill.setAttribute('opacity', '0.85');
-    fill.setAttribute('class', 'sector-fill');
-    fill.setAttribute('data-idx', i);
-    fill.style.pointerEvents = 'none';
-    fill.style.color = area.color;
-
-    sectorsG.appendChild(bg);
-    sectorsG.appendChild(fill);
-
+    fill.setAttribute('d', sectorPath(a1, a2, R * values[i] / 10)); fill.setAttribute('fill', area.color);
+    fill.setAttribute('opacity', '0.85'); fill.setAttribute('class', 'sector-fill');
+    fill.setAttribute('data-idx', i); fill.style.pointerEvents = 'none';
+    sectorsG.appendChild(bg); sectorsG.appendChild(fill);
     const [lx, ly] = polar(CX, CY, R + 25, aMid);
     const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-    text.setAttribute('x', lx);
-    text.setAttribute('y', ly);
-    text.setAttribute('class', 'sector-label');
-    text.textContent = `${area.icon} ${area.name}`;
-    labelsG.appendChild(text);
+    text.setAttribute('x', lx); text.setAttribute('y', ly); text.setAttribute('class', 'sector-label');
+    text.textContent = `${area.icon} ${area.name}`; labelsG.appendChild(text);
   });
 }
 
 function updateSector(i) {
   const step = (Math.PI * 2) / AREAS.length;
   const startOffset = -Math.PI / 2 - step / 2;
-  const a1 = startOffset + i * step;
-  const a2 = a1 + step;
+  const a1 = startOffset + i * step, a2 = a1 + step;
   const fill = sectorsG.querySelector(`.sector-fill[data-idx="${i}"]`);
   if (fill) fill.setAttribute('d', sectorPath(a1, a2, R * values[i] / 10));
-  updateAvg();
-  saveToLocalStorage();
+  updateAvg(); saveToLocalStorage();
 }
 
 function updateAvg() {
   const avg = values.reduce((a,b) => a+b, 0) / values.length;
-  const el = document.getElementById('avgText');
-  animateNumber(el, parseFloat(el.textContent), avg, 600);
+  animateNumber(document.getElementById('avgText'), parseFloat(document.getElementById('avgText').textContent), avg, 600);
   if (avg >= 8) launchConfetti();
 }
 
@@ -559,145 +498,97 @@ function animateNumber(el, from, to, duration) {
   const start = performance.now();
   function tick(t) {
     const p = Math.min(1, (t - start) / duration);
-    const eased = 1 - Math.pow(1 - p, 3);
-    el.textContent = (from + (to - from) * eased).toFixed(1);
+    el.textContent = (from + (to - from) * (1 - Math.pow(1 - p, 3))).toFixed(1);
     if (p < 1) requestAnimationFrame(tick);
   }
   requestAnimationFrame(tick);
 }
 
 function openModal(i) {
-  currentIdx = i;
-  const area = AREAS[i];
+  currentIdx = i; const area = AREAS[i];
   document.getElementById('modalTitle').textContent = `${area.icon} ${area.name}`;
   document.getElementById('modalDesc').textContent = area.desc;
   document.getElementById('modalDot').style.background = area.color;
-  const slider = document.getElementById('slider');
-  slider.value = values[i];
+  const slider = document.getElementById('slider'); slider.value = values[i];
   document.getElementById('valueDisplay').textContent = values[i];
   document.getElementById('modal').classList.add('active');
 }
 
-document.getElementById('slider').addEventListener('input', e => {
-  document.getElementById('valueDisplay').textContent = e.target.value;
-});
-
+document.getElementById('slider').addEventListener('input', e => { document.getElementById('valueDisplay').textContent = e.target.value; });
 function saveValue() {
   values[currentIdx] = parseInt(document.getElementById('slider').value);
-  updateSector(currentIdx);
-  document.getElementById('modal').classList.remove('active');
+  updateSector(currentIdx); document.getElementById('modal').classList.remove('active');
 }
-
-document.getElementById('modal').addEventListener('click', e => {
-  if (e.target.id === 'modal') document.getElementById('modal').classList.remove('active');
-});
-
-function saveToLocalStorage() {
-  localStorage.setItem('wheelOfLife', JSON.stringify(values));
-}
-
+document.getElementById('modal').addEventListener('click', e => { if (e.target.id === 'modal') document.getElementById('modal').classList.remove('active'); });
+function saveToLocalStorage() { localStorage.setItem('wheelOfLife', JSON.stringify(values)); }
 function openShareMenu() { document.getElementById('shareMenu').classList.add('active'); }
 function closeShareMenu() { document.getElementById('shareMenu').classList.remove('active'); }
-
-document.getElementById('shareMenu').addEventListener('click', e => {
-  if (e.target.id === 'shareMenu') closeShareMenu();
-});
+document.getElementById('shareMenu').addEventListener('click', e => { if (e.target.id === 'shareMenu') closeShareMenu(); });
 
 async function shareNative() {
-  const avg = values.reduce((a, b) => a + b, 0) / values.length;
-  const text = `Моё колесо баланса: ${avg.toFixed(1)}/10 🎡`;
   closeShareMenu();
+  const avg = values.reduce((a, b) => a + b, 0) / values.length;
   if (navigator.share) {
-    try { await navigator.share({ title: 'Balance', text: text, url: window.location.href }); } catch (e) {}
+    try { await navigator.share({ title: 'Balance', text: `Моё колесо баланса: ${avg.toFixed(1)}/10 🎡`, url: window.location.href }); } catch (e) {}
   } else { copyLink(); }
 }
-
 function copyLink() {
   closeShareMenu();
   navigator.clipboard.writeText(window.location.href).then(() => showToast('🔗 Ссылка скопирована')).catch(() => showToast('❌ Не удалось скопировать'));
 }
 
 async function downloadWallpaper() {
-  showToast('🎨 Генерируем обои...');
-  closeShareMenu();
+  showToast('🎨 Генерируем обои...'); closeShareMenu();
   const container = document.getElementById('wallpaperRender');
   const avg = values.reduce((a, b) => a + b, 0) / values.length;
   const dateStr = new Date().toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
-  
-  const step = (Math.PI * 2) / AREAS.length;
-  const startOffset = -Math.PI / 2 - step / 2;
+  const step = (Math.PI * 2) / AREAS.length, startOffset = -Math.PI / 2 - step / 2;
   let wheelSvg = `<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="wpCenterGrad"><stop offset="0%" stop-color="#a855f7"/><stop offset="100%" stop-color="#ec4899"/></radialGradient></defs>`;
-  
   AREAS.forEach((area, i) => {
-    const a1 = startOffset + i * step;
-    const a2 = a1 + step;
-    const [x1, y1] = polar(CX, CY, R, a1);
-    const [x2, y2] = polar(CX, CY, R, a2);
-    const large = a2 - a1 > Math.PI ? 1 : 0;
-    wheelSvg += `<path d="M ${CX} ${CY} L ${x1} ${y1} A ${R} ${R} 0 ${large} 1 ${x2} ${y2} Z" fill="${area.color}" opacity="0.15"/>`;
-    
+    const a1 = startOffset + i * step, a2 = a1 + step;
+    const [x1, y1] = polar(CX, CY, R, a1), [x2, y2] = polar(CX, CY, R, a2);
+    wheelSvg += `<path d="M ${CX} ${CY} L ${x1} ${y1} A ${R} ${R} 0 ${a2 - a1 > Math.PI ? 1 : 0} 1 ${x2} ${y2} Z" fill="${area.color}" opacity="0.15"/>`;
     const fillR = R * values[i] / 10;
-    const [fx1, fy1] = polar(CX, CY, fillR, a1);
-    const [fx2, fy2] = polar(CX, CY, fillR, a2);
-    wheelSvg += `<path d="M ${CX} ${CY} L ${fx1} ${fy1} A ${fillR} ${fillR} 0 ${large} 1 ${fx2} ${fy2} Z" fill="${area.color}" opacity="0.85"/>`;
-    
-    const aMid = (a1 + a2) / 2;
-    const [lx, ly] = polar(CX, CY, R + 25, aMid);
-    wheelSvg += `<text x="${lx}" y="${ly}" fill="#fff" font-size="12" font-weight="500" text-anchor="middle" font-family="-apple-system, sans-serif">${area.icon} ${area.name}</text>`;
+    const [fx1, fy1] = polar(CX, CY, fillR, a1), [fx2, fy2] = polar(CX, CY, fillR, a2);
+    wheelSvg += `<path d="M ${CX} ${CY} L ${fx1} ${fy1} A ${fillR} ${fillR} 0 ${a2 - a1 > Math.PI ? 1 : 0} 1 ${fx2} ${fy2} Z" fill="${area.color}" opacity="0.85"/>`;
+    const [lx, ly] = polar(CX, CY, R + 25, (a1 + a2) / 2);
+    wheelSvg += `<text x="${lx}" y="${ly}" fill="#fff" font-size="12" font-weight="500" text-anchor="middle" font-family="sans-serif">${area.icon} ${area.name}</text>`;
   });
-  
   wheelSvg += `<circle cx="250" cy="250" r="60" fill="rgba(10,10,26,0.85)" stroke="url(#wpCenterGrad)" stroke-width="2"/>
-    <text x="250" y="245" fill="#fff" font-size="36" font-weight="200" text-anchor="middle" dominant-baseline="middle" font-family="-apple-system, sans-serif">${avg.toFixed(1)}</text>
-    <text x="250" y="270" fill="rgba(255,255,255,0.5)" font-size="10" text-anchor="middle" letter-spacing="2" font-family="-apple-system, sans-serif">СРЕДНИЙ БАЛЛ</text></svg>`;
+    <text x="250" y="245" fill="#fff" font-size="36" font-weight="200" text-anchor="middle" dominant-baseline="middle" font-family="sans-serif">${avg.toFixed(1)}</text>
+    <text x="250" y="270" fill="rgba(255,255,255,0.5)" font-size="10" text-anchor="middle" letter-spacing="2" font-family="sans-serif">СРЕДНИЙ БАЛЛ</text></svg>`;
   
-  const areasHtml = AREAS.map((area, i) => `
-    <div class="wp-area">
-      <div class="wp-area-dot" style="background: ${area.color}; box-shadow: 0 0 12px ${area.color}"></div>
-      <div class="wp-area-name">${area.icon} ${area.name}</div>
-      <div class="wp-area-value">${values[i]}/10</div>
-    </div>`).join('');
-  
-  container.innerHTML = `
-    <div class="wp-inner">
-      <div class="wp-title">BALANCE</div>
-      <div class="wp-date">${dateStr}</div>
-      <div class="wp-wheel-container">${wheelSvg}</div>
-      <div class="wp-stats">
-        <div class="wp-stat"><div class="wp-stat-value">${avg.toFixed(1)}</div><div class="wp-stat-label">Средний балл</div></div>
-        <div class="wp-stat"><div class="wp-stat-value">${Math.min(...values)}</div><div class="wp-stat-label">Минимум</div></div>
-        <div class="wp-stat"><div class="wp-stat-value">${Math.max(...values)}</div><div class="wp-stat-label">Максимум</div></div>
-      </div>
-      <div class="wp-areas">${areasHtml}</div>
-      <div class="wp-footer">balance.app</div>
-    </div>`;
+  container.innerHTML = `<div class="wp-inner">
+    <div class="wp-title">BALANCE</div><div class="wp-date">${dateStr}</div>
+    <div class="wp-wheel-container">${wheelSvg}</div>
+    <div class="wp-stats">
+      <div class="wp-stat"><div class="wp-stat-value">${avg.toFixed(1)}</div><div class="wp-stat-label">Средний</div></div>
+      <div class="wp-stat"><div class="wp-stat-value">${Math.min(...values)}</div><div class="wp-stat-label">Минимум</div></div>
+      <div class="wp-stat"><div class="wp-stat-value">${Math.max(...values)}</div><div class="wp-stat-label">Максимум</div></div>
+    </div>
+    <div class="wp-areas">${AREAS.map((a, i) => `<div class="wp-area"><div class="wp-area-dot" style="background:${a.color};box-shadow:0 0 12px ${a.color}"></div><div class="wp-area-name">${a.icon} ${a.name}</div><div class="wp-area-value">${values[i]}/10</div></div>`).join('')}</div>
+    <div class="wp-footer">balance.app</div></div>`;
   
   await new Promise(r => setTimeout(r, 100));
   try {
     const canvas = await html2canvas(container, { width: 2560, height: 1440, scale: 1, backgroundColor: null, useCORS: true });
     canvas.toBlob(blob => {
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
+      const url = URL.createObjectURL(blob), a = document.createElement('a');
       a.href = url; a.download = `balance-2k-${Date.now()}.png`;
-      document.body.appendChild(a); a.click(); document.body.removeChild(a);
-      URL.revokeObjectURL(url);
+      document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
       showToast('✅ Обои сохранены!');
     }, 'image/png');
-  } catch (err) {
-    console.error(err);
-    showToast('❌ Ошибка при генерации');
-  }
+  } catch (err) { showToast('❌ Ошибка генерации'); }
 }
 
 function showToast(message) {
-  const toast = document.getElementById('toast');
-  toast.innerHTML = message;
-  toast.classList.add('show');
+  const toast = document.getElementById('toast'); toast.innerHTML = message; toast.classList.add('show');
   setTimeout(() => toast.classList.remove('show'), 2500);
 }
 
-// ========== УМНЫЙ ГИБРИДНЫЙ АНАЛИЗ (РАБОТАЕТ В РФ БЕЗ СБОЕВ) ==========
+// ========== ПРОДВИНУТЫЙ ГИБРИДНЫЙ АНАЛИЗ (РАБОТАЕТ В РФ БЕЗ СБОЕВ) ==========
 
-const CACHE_KEY = 'aiAnalysisCache';
+const CACHE_KEY = 'smartAnalysisCache';
 const CACHE_DURATION = 15 * 60 * 1000;
 
 function getCachedAnalysis() {
@@ -705,59 +596,127 @@ function getCachedAnalysis() {
     const cached = localStorage.getItem(CACHE_KEY);
     if (!cached) return null;
     const data = JSON.parse(cached);
-    if (JSON.stringify(data.values) === JSON.stringify(values) && (Date.now() - data.timestamp) < CACHE_DURATION) {
-      return data.response;
-    }
+    if (JSON.stringify(data.values) === JSON.stringify(values) && (Date.now() - data.timestamp) < CACHE_DURATION) return data.response;
     return null;
   } catch (e) { return null; }
 }
 
 function saveCachedAnalysis(response) {
-  try {
-    localStorage.setItem(CACHE_KEY, JSON.stringify({ values: [...values], response, timestamp: Date.now() }));
-  } catch (e) { console.error('Cache save error:', e); }
+  try { localStorage.setItem(CACHE_KEY, JSON.stringify({ values: [...values], response, timestamp: Date.now() })); } catch (e) {}
 }
 
-// Локальный генератор анализа (гарантированно работает без интернета и блокировок)
-function generateLocalAnalysis() {
+// База неочевидных, конкретных и живых рекомендаций
+const ADVICE_DB = {
+  'Здоровье': {
+    low: "Правило 23:00. Поставь будильник с подписью 'Отбой'. Экраны гаснут. Телу нужен простой режим, а не подвиги.",
+    mid: "Добавь 15 минут прогулки без телефона в день. Просто иди и смотри по сторонам. Это перезагружает мозг лучше кофе.",
+    high: "Ты в ресурсе. Брось себе вызов: добавь одну новую привычку (контрастный душ, растяжка). Тело скажет спасибо."
+  },
+  'Карьера': {
+    low: "Напиши одно письмо или сообщение с идеей, которую давно держишь в голове. Худшее, что будет — игнор. Лучшее — новые возможности.",
+    mid: "Поговори с руководителем не о проблемах, а о том, какой проект ты хочешь взять на себя. Прояви инициативу.",
+    high: "Ты перерос текущие задачи. Попроси проект, который пугает, но интересен. Или начни менторить кого-то."
+  },
+  'Финансы': {
+    low: "Отмени одну спонтанную подписку или покупку на этой неделе. Просто заметь этот момент и перенаправь эти деньги в 'подушку'.",
+    mid: "Веди учёт трат 3 дня без фанатизма. Просто посмотри, куда утекают 'невидимые' 1000 рублей в день.",
+    high: "Деньги есть. Инвестируй 5% не в вещи, а в комфорт или обучение: ортопедическая подушка, хороший курс, массаж."
+  },
+  'Отношения': {
+    low: "Напиши одному человеку: 'Вспомнил о тебе, как ты?'. Без повода и без ожиданий ответа. Просто шаг навстречу.",
+    mid: "Устрой 'свидание' без телефонов. Даже если вы живете вместе. 30 минут качественного разговора меняют всё.",
+    high: "Спроси партнера: 'Что я делаю такого, что заставляет тебя чувствовать себя любимым?'. Услышь ответ и сделай это еще раз."
+  },
+  'Семья': {
+    low: "Позвони родным не с дежурным 'как дела', а чтобы рассказать одну маленькую хорошую новость о себе. Это сближает.",
+    mid: "Предложи конкретную встречу на выходных. Не 'давай как-нибудь', а 'давай в субботу в 15:00'.",
+    high: "Создай маленькую семейную традицию: воскресный завтрак, вечерний звонок или совместный просмотр фильма."
+  },
+  'Окружение': {
+    low: "Выброси или отдай 5 вещей, которыми не пользовался год. Пространство сразу станет легче дышать.",
+    mid: "Организуй одну зону: рабочий стол или тумбочку. Порядок в малом дает порядок в мыслях.",
+    high: "Добавь одну деталь для уюта: свет, растение или запах. Ты это заслужил, сделай пространство местом силы."
+  },
+  'Саморазвитие': {
+    low: "Посмотри 15-минутное интервью или подкаст по теме, о которой ничего не знаешь. Просто для расширения кругозора, без давления.",
+    mid: "Выдели 20 минут в день на чтение или обучение. Отключи уведомления. Это инвестиция, которая окупается всегда.",
+    high: "Начни делиться знаниями. Напиши пост или расскажи другу то, что выучил недавно. Обучение через преподавание — лучший уровень."
+  },
+  'Отдых': {
+    low: "В воскресенье запрети себе любые 'полезные' дела. Лежи, гуляй, смотри тупые видео. Это не лень, это техобслуживание.",
+    mid: "Запланируй в календаре 1 час только для себя. Без телефона, без дел. Чай, книга или тишина. Это святое время.",
+    high: "Ты умеешь отдыхать. Попробуй новый формат: если обычно сидишь дома — съезди за город, и наоборот. Встряхни рутину."
+  }
+};
+
+function generateSmartAnalysis() {
   const avg = values.reduce((a, b) => a + b, 0) / values.length;
   const min = Math.min(...values);
   const max = Math.max(...values);
+  const minArea = AREAS[values.indexOf(min)];
+  const maxArea = AREAS[values.indexOf(max)];
+  const gap = max - min;
 
-  const weakAreas = AREAS.map((a, i) => ({...a, val: values[i]})).filter(a => a.val <= 5).sort((a, b) => a.val - b.val).slice(0, 2);
-  const strongAreas = AREAS.map((a, i) => ({...a, val: values[i]})).filter(a => a.val >= 7).sort((a, b) => b.val - a.val).slice(0, 1);
+  // 1. Определение профиля (живой язык, без клише)
+  let summary = "";
+  if (gap >= 5) {
+    summary = `У тебя сильный перекос: ${maxArea.name} на высоте, а ${minArea.name} проседает. Ты пытаешься компенсировать одно за счет другого, но это прямой путь к выгоранию. Нужно выровнять базу.`;
+  } else if (avg >= 8) {
+    summary = `У тебя мощный, устойчивый баланс. Это редкость и большая ценность. Твоя задача сейчас — не 'чинить' жизнь, а расширять границы и делиться ресурсом.`;
+  } else if (avg < 5.5) {
+    summary = `Жизнь сейчас похожа на режим 'выживания'. Это нормально, но давай найдем одну маленькую точку опоры, чтобы начать выбираться из этой ямы без резких движений.`;
+  } else {
+    summary = `У тебя хорошая база, но есть зоны, которые тихо забирают энергию. Давай точечно их подтянем, чтобы общий фон стал ярче.`;
+  }
 
+  // 2. Статус
   let status = 'good';
   if (avg >= 8) status = 'excellent';
-  else if (avg < 5) status = 'critical';
-  else if (weakAreas.length > 0) status = 'needs_attention';
+  else if (avg < 5.5) status = 'critical';
+  else if (gap >= 4 || min <= 4) status = 'needs_attention';
 
-  const summary = avg >= 7 
-    ? `У тебя хороший общий баланс (${avg.toFixed(1)}). Есть сильные стороны, на которые можно опереться, но пара зон всё ещё проседает.`
-    : `Средний балл ${avg.toFixed(1)}. Видно, что некоторые сферы забирают много сил, а другие, наоборот, дают ресурс. Давай это выровняем.`;
-
-  const focus = weakAreas.map(area => {
-    let advice = "";
-    if (area.name === 'Здоровье') advice = "Начни с малого: добавь 15-минутную прогулку каждый день и ложись спать на 30 минут раньше. Не пытайся изменить всё сразу.";
-    else if (area.name === 'Карьера') advice = "Выпиши 3 задачи, которые ты откладываешь. Сделай самую маленькую из них сегодня. Это снизит тревогу.";
-    else if (area.name === 'Финансы') advice = "Просто запиши все свои траты за следующие 3 дня. Осознанность — первый шаг к контролю, без жёстких ограничений.";
-    else if (area.name === 'Отношения') advice = "Напиши или позвони близкому человеку просто так, без повода. Искренний вопрос 'Как ты?' творит чудеса.";
-    else if (area.name === 'Семья') advice = "Выдели 20 минут в неделю на качественный разговор с родными, без телефонов и спешки.";
-    else if (area.name === 'Окружение') advice = "Разбери одну маленькую зону: рабочий стол или одну полку. Порядок в пространстве даёт порядок в мыслях.";
-    else if (area.name === 'Саморазвитие') advice = "Посмотри 1 короткое видео или прочитай статью по теме, которая тебе давно интересна, но до которой не доходили руки.";
-    else if (area.name === 'Отдых') advice = "Запланируй в календаре 1 час на этой неделе только для себя. Без телефона, без дел. Просто чай, книга или тишина.";
-    return { area: area.name, icon: area.icon, value: area.val, advice };
+  // 3. Фокус (2-3 сферы с неочевидными советами)
+  const focus = [];
+  // Всегда берем самую слабую сферу
+  const getLevel = (v) => v <= 4 ? 'low' : (v <= 7 ? 'mid' : 'high');
+  focus.push({
+    area: minArea.name,
+    icon: minArea.icon,
+    value: min,
+    advice: ADVICE_DB[minArea.name][getLevel(min)]
   });
 
-  const strengths = strongAreas.length > 0 
-    ? `Твоя сильная сторона — ${strongAreas[0].name} (${strongAreas[0].val}/10). Это твой фундамент. Используй эту уверенность, чтобы подтянуть остальные сферы.`
-    : "Ты уже молодец, что вообще занялся анализом своей жизни. Это важный и смелый шаг.";
+  // Если есть сильный перекос, добавляем сильную сферу с советом, как её использовать
+  if (gap >= 4 && max >= 7) {
+    focus.push({
+      area: maxArea.name,
+      icon: maxArea.icon,
+      value: max,
+      advice: `Используй эту сильную сторону как рычаг. Например, делегируй через ${maxArea.name.toLowerCase()} задачи, чтобы освободить время для ${minArea.name.toLowerCase()}.`
+    });
+  } else {
+    // Иначе берем вторую самую слабую
+    const sorted = [...AREAS].map((a, i) => ({...a, val: values[i]})).sort((a, b) => a.val - b.val);
+    if (sorted[1].val <= 6) {
+      focus.push({
+        area: sorted[1].name,
+        icon: sorted[1].icon,
+        value: sorted[1].val,
+        advice: ADVICE_DB[sorted[1].name][getLevel(sorted[1].val)]
+      });
+    }
+  }
 
-  const nextStep = weakAreas.length > 0 
-    ? `На этой неделе сфокусируйся только на одной сфере: "${weakAreas[0].name}". Сделай один микро-шаг из совета выше. Не больше.`
-    : "Продолжай делать то, что делаешь, и попробуй добавить 1 новый приятный ритуал в свой день.";
+  // 4. Опоры (даже при плохих оценках есть что-то >= 6)
+  const strengthsAreas = AREAS.map((a, i) => ({...a, val: values[i]})).filter(a => a.val >= 6).sort((a, b) => b.val - a.val);
+  const strengths = strengthsAreas.length > 0 
+    ? `Твой фундамент — ${strengthsAreas[0].name} (${strengthsAreas[0].val}/10). Опирайся на это. Когда всё сложно, возвращайся к тому, что здесь работает хорошо.`
+    : "Ты уже молодец, что вообще занялся анализом. Сам факт, что ты это делаешь, говорит о том, что ты готов брать ответственность за свою жизнь.";
 
-  return { summary, status, focus: focus.length > 0 ? focus : [{area: 'Баланс', icon: '⚖️', value: Math.round(avg), advice: 'Попробуй немного разнообразить рутину.'}], strengths, nextStep };
+  // 5. Конкретный шаг на 24 часа
+  const nextStep = `Сегодня вечером сделай одно микро-действие для сферы "${minArea.name}": ${ADVICE_DB[minArea.name][getLevel(min)].split('.')[0]}. Не откладывай на понедельник.`;
+
+  return { summary, status, focus, strengths, nextStep };
 }
 
 async function showRecommendations() {
@@ -767,21 +726,21 @@ async function showRecommendations() {
   
   const cached = getCachedAnalysis();
   if (cached) {
-    content.innerHTML = `<div class="ai-loader"><div class="ai-loader-orb"></div><div class="ai-loader-text">Загружаем анализ...</div></div>`;
-    await new Promise(r => setTimeout(r, 300));
+    content.innerHTML = `<div class="ai-loader"><div class="ai-loader-orb"></div><div class="ai-loader-text">Загружаем разбор...</div></div>`;
+    await new Promise(r => setTimeout(r, 400));
     renderAIAnalysis(cached, true);
     return;
   }
   
-  content.innerHTML = `<div class="ai-loader"><div class="ai-loader-orb"></div><div class="ai-loader-text">Анализируем твоё колесо<span class="ai-loader-dots"></span></div></div>`;
+  content.innerHTML = `<div class="ai-loader"><div class="ai-loader-orb"></div><div class="ai-loader-text">Анализируем паттерны<span class="ai-loader-dots"></span></div></div>`;
   
   try {
-    // Пытаемся получить данные от внешнего API с таймаутом 5 секунд
+    // Пытаемся получить ответ от ИИ с жёстким таймаутом 3 секунды
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 5000);
+    const timeoutId = setTimeout(() => controller.abort(), 3000);
     
     const avg = values.reduce((a, b) => a + b, 0) / values.length;
-    const areasData = AREAS.map((area, i) => `- ${area.name}: ${values[i]}/10`).join('\n');
+    const areasData = AREAS.map((a, i) => `${a.name}: ${values[i]}`).join(', ');
     
     const response = await fetch('https://text.pollinations.ai/openai', {
       method: 'POST',
@@ -789,12 +748,12 @@ async function showRecommendations() {
       signal: controller.signal,
       body: JSON.stringify({
         messages: [
-          { role: 'system', content: 'Ты — тёплый и конкретный помощник. Отвечай ТОЛЬКО на русском языке. Никаких англицизмов. Пиши короткими предложениями. Верни СТРОГО валидный JSON без markdown-обёрток.' },
-          { role: 'user', content: `Оценки жизни от 0 до 10:\n${areasData}\nСредний: ${avg.toFixed(1)}. Верни JSON: {"summary":"текст","status":"excellent|good|needs_attention|critical","focus":[{"area":"имя сферы","icon":"эмодзи","value":число,"advice":"совет"}],"strengths":"текст","nextStep":"текст"}` }
+          { role: 'system', content: 'Ты — жёсткий, но справедливый ментор. Никакой воды, банальностей и англицизмов. Только конкретные, неочевидные микро-шаги. Даже при высоких оценках давай советы по "апгрейду", а не похвалу. Верни СТРОГО валидный JSON без markdown.' },
+          { role: 'user', content: `Оценки (0-10): ${areasData}. Средний: ${avg}. Верни JSON: {"summary":"текст","status":"excellent|good|needs_attention|critical","focus":[{"area":"имя","icon":"эмодзи","value":число,"advice":"конкретный неочевидный совет"}],"strengths":"текст","nextStep":"текст"}` }
         ],
         model: 'openai',
         response_format: { type: "json_object" },
-        temperature: 0.5
+        temperature: 0.6
       })
     });
     clearTimeout(timeoutId);
@@ -802,18 +761,18 @@ async function showRecommendations() {
     if (!response.ok) throw new Error('API error');
     const data = await response.json();
     let text = data.choices?.[0]?.message?.content?.trim();
-    if (!text) throw new Error('Empty response');
+    if (!text) throw new Error('Empty');
     
     text = text.replace(/^```(?:json)?\s*/i, '').replace(/```\s*$/, '');
     const parsed = JSON.parse(text);
-    if (!parsed.summary || !Array.isArray(parsed.focus)) throw new Error('Invalid structure');
+    if (!parsed.summary || !Array.isArray(parsed.focus)) throw new Error('Invalid');
     
     saveCachedAnalysis(parsed);
     renderAIAnalysis(parsed, false);
   } catch (err) {
-    console.log('Внешний ИИ недоступен, используем локальный анализ:', err.message);
-    // БЕССБОЙНЫЙ FALLBACK: если внешний ИИ заблокирован или упал, генерируем локально
-    const localAnalysis = generateLocalAnalysis();
+    console.log('ИИ недоступен, включаем продвинутый локальный анализ');
+    // БЕСШОВНЫЙ FALLBACK: локальный генератор теперь настолько хорош, что пользователь не заметит разницы
+    const localAnalysis = generateSmartAnalysis();
     saveCachedAnalysis(localAnalysis);
     renderAIAnalysis(localAnalysis, false);
   }
@@ -822,10 +781,10 @@ async function showRecommendations() {
 function renderAIAnalysis(data, fromCache) {
   const content = document.getElementById('recContent');
   const statusMap = {
-    'excellent': { label: '🌟 Отличный баланс', color: '#10b981' },
-    'good': { label: '✨ Хороший баланс', color: '#06b6d4' },
-    'needs_attention': { label: '⚠️ Есть зоны роста', color: '#f59e0b' },
-    'critical': { label: '🔥 Требует внимания', color: '#ef4444' }
+    'excellent': { label: '🌟 Устойчивый баланс', color: '#10b981' },
+    'good': { label: '✨ Хорошая база', color: '#06b6d4' },
+    'needs_attention': { label: '⚠️ Есть перекосы', color: '#f59e0b' },
+    'critical': { label: '🔥 Режим выживания', color: '#ef4444' }
   };
   const status = statusMap[data.status] || statusMap['needs_attention'];
   
@@ -837,7 +796,7 @@ function renderAIAnalysis(data, fromCache) {
     </div>`;
   
   if (data.focus && data.focus.length > 0) {
-    html += `<div class="rec-section"><div class="rec-section-title">🎯 На что обратить внимание</div>`;
+    html += `<div class="rec-section"><div class="rec-section-title">🎯 Точки приложения сил</div>`;
     data.focus.forEach((item, idx) => {
       html += `
         <div class="rec-item" style="animation-delay: ${idx * 0.1}s">
@@ -853,30 +812,26 @@ function renderAIAnalysis(data, fromCache) {
   }
   
   if (data.strengths) {
-    html += `<div class="rec-section"><div class="rec-section-title">💪 Твои опоры</div><div class="rec-item"><div class="rec-item-text">${data.strengths}</div></div></div>`;
+    html += `<div class="rec-section"><div class="rec-section-title">💪 Твой фундамент</div><div class="rec-item"><div class="rec-item-text">${data.strengths}</div></div></div>`;
   }
   if (data.nextStep) {
-    html += `<div class="rec-section"><div class="next-step-card"><div class="next-step-title"><span>🚀</span><span>Шаг на эту неделю</span></div><div class="next-step-text">${data.nextStep}</div></div></div>`;
+    html += `<div class="rec-section"><div class="next-step-card"><div class="next-step-title"><span>🚀</span><span>Шаг на ближайшие 24 часа</span></div><div class="next-step-text">${data.nextStep}</div></div></div>`;
   }
-  if (fromCache) html += `<div class="cache-hint">💾 Анализ из кэша · Измени оценки для нового</div>`;
+  if (fromCache) html += `<div class="cache-hint">💾 Анализ из кэша · Измени оценки для нового разбора</div>`;
   
   content.innerHTML = html;
 }
 
-function closeRecommendations() {
-  document.getElementById('recPanel').classList.remove('active');
-}
+function closeRecommendations() { document.getElementById('recPanel').classList.remove('active'); }
 
 function launchConfetti() {
   const colors = ['#a855f7', '#ec4899', '#f59e0b', '#10b981', '#06b6d4'];
   for (let i = 0; i < 60; i++) {
-    const c = document.createElement('div');
-    c.className = 'confetti';
+    const c = document.createElement('div'); c.className = 'confetti';
     c.style.left = Math.random() * 100 + 'vw';
     c.style.background = colors[Math.floor(Math.random() * colors.length)];
     c.style.animationDuration = (2 + Math.random() * 2) + 's';
     c.style.animationDelay = Math.random() * 0.5 + 's';
-    c.style.transform = `rotate(${Math.random() * 360}deg)`;
     document.body.appendChild(c);
     setTimeout(() => c.remove(), 4000);
   }
@@ -884,22 +839,16 @@ function launchConfetti() {
 
 function spawnParticles() {
   for (let i = 0; i < 20; i++) {
-    const p = document.createElement('div');
-    p.className = 'particle';
+    const p = document.createElement('div'); p.className = 'particle';
     p.style.left = Math.random() * 100 + 'vw';
-    const duration = 10 + Math.random() * 10;
-    const delay = -Math.random() * duration;
-    p.style.setProperty('--duration', duration + 's');
-    p.style.setProperty('--delay', delay + 's');
+    const duration = 10 + Math.random() * 10, delay = -Math.random() * duration;
+    p.style.setProperty('--duration', duration + 's'); p.style.setProperty('--delay', delay + 's');
     p.style.background = `hsla(${Math.random() * 360}, 70%, 60%, 0.4)`;
     document.body.appendChild(p);
   }
 }
 
-buildWheel();
-spawnParticles();
-updateAvg();
-
+buildWheel(); spawnParticles(); updateAvg();
 setTimeout(() => {
   document.querySelectorAll('.sector-fill').forEach((el, i) => {
     el.style.opacity = '0';
